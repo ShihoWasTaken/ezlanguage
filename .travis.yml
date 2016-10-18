@@ -8,10 +8,14 @@ notifications:
 
 os:
   - linux
-
-before_install:
-  - sudo apt-get update -qy
-  - sudo apt-get install g++-5
+  
+addons:
+  apt:
+    sources:
+      # gcc/g++ repository
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-5
 
 install:
 # g++ install
