@@ -9,7 +9,6 @@ class Iterative_instruction :
 protected:
 
 public:
-
-    std::string translate();
+    virtual std::string translate()=0;
 };
 #endif

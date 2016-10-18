@@ -22,7 +22,7 @@ YACC_FLAGS =
 #sources cpp
 # --- RAJOUTER CHAQUE FICHIER CPP DE MODULES ICI ! ---
 # --- FAIRE UN FICHIER CPP POUR CHAQUE FICHIER H S'IL Y A UNE CLASSE DEDANS ---
-MOD_CPP = src/modules/Array.cpp src/modules/Condition.cpp src/modules/Forall.cpp src/modules/Operator.cpp src/modules/Range.cpp src/modules/Iterative_instruction.cpp 
+MOD_CPP = src/modules/Array.cpp src/modules/Iterative_instruction.cpp src/modules/Condition.cpp src/modules/Conditionnal_instruction.cpp src/modules/Declaration.cpp src/modules/Forall.cpp src/modules/Foreach.cpp src/modules/Instruction.cpp  src/modules/Node.cpp src/modules/Operator.cpp src/modules/Range.cpp src/modules/Repeat.cpp src/modules/While.cpp
 #fichiers objets
 MOD_OBJ = $(MOD_CPP:src/modules/%.cpp=obj/%.o)
 #fichiers de dependances
@@ -37,7 +37,7 @@ EXEC = EZ_language_compiler
 #compilateur
 all: $(EXEC) 
 
-EZ_language_compiler : obj/lex.yy.c obj/EZ_language_compiler.tab.cpp obj/EZ_language_compiler.tab.hpp $(MOD_OBJ)
+EZ_language_compiler : obj/lex.yy.c obj/EZ_language_compiler.tab.cpp obj/EZ_language_compiler.tab.hpp $(MOD_OBJ) 
 	@echo  "\033[1;33mCréation du compilateur en compilant les sources\033[0m"
 	$(CC) -o bin/$@ obj/EZ_language_compiler.tab.cpp obj/lex.yy.c $(MOD_OBJ) $(CC_FLAGS) -ll 
 
