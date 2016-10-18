@@ -11,6 +11,7 @@ obj/*
 !obj/.dummy.txt
 *.o
 *.gch
+*.d
 
 # User-specific files
 *.user

@@ -1,5 +1,5 @@
 #compilateur utilisé
-CC = g++
+CC = g++-5
 # flags de compilation
 CC_FLAGS = -Wall -std=c++11 #-ggdb
 CC_MOD_FLAGS = -MM #-MP 
@@ -22,7 +22,7 @@ YACC_FLAGS =
 #sources cpp
 # --- RAJOUTER CHAQUE FICHIER CPP DE MODULES ICI ! ---
 # --- FAIRE UN FICHIER CPP POUR CHAQUE FICHIER H S'IL Y A UNE CLASSE DEDANS ---
-MOD_CPP = src/modules/Array.cpp src/modules/Iterative_instruction.cpp src/modules/Condition.cpp src/modules/Conditionnal_instruction.cpp src/modules/Declaration.cpp src/modules/Forall.cpp src/modules/Foreach.cpp src/modules/Instruction.cpp  src/modules/Node.cpp src/modules/Operator.cpp src/modules/Range.cpp src/modules/Repeat.cpp src/modules/While.cpp
+	MOD_CPP = src/modules/Array.cpp src/modules/Iterative_instruction.cpp src/modules/Condition.cpp src/modules/Conditionnal_instruction.cpp src/modules/Declaration.cpp src/modules/Forall.cpp src/modules/Foreach.cpp src/modules/Instruction.cpp  src/modules/Node.cpp src/modules/Operator.cpp src/modules/Range.cpp src/modules/Repeat.cpp src/modules/While.cpp
 #fichiers objets
 MOD_OBJ = $(MOD_CPP:src/modules/%.cpp=obj/%.o)
 #fichiers de dependances
