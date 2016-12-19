@@ -41,4 +41,4 @@ void Iterative_instruction::setInstructions(vector<Instruction> &i) {
 	instructions=i;
 }
 
-string Iterative_instruction::translate(){};
+string Iterative_instruction::translate(){ return ""; }

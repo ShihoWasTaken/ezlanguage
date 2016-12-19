@@ -9,7 +9,7 @@ using namespace std;
 DeclarationVariable::DeclarationVariable(variable var)
 {
 	var_from_tab_symbol = var;
-	next_var = new DeclarationVariable;
+// 	next_var = new DeclarationVariable;
 }
 
 DeclarationVariable::DeclarationVariable(variable var, DeclarationVariable* _next){
@@ -39,12 +39,14 @@ string DeclarationVariable::translate() {
 		Need Type & id from var to translate to c++
 		just found the type .
     */
-    
-    //====== TODO : get the identifier of current variable ======\\
-   // 															  \\
-  //  string identifier  = var_from_tab_symbol.get_identifier();   \\
- // 															    \\
-//===================================================================\\
+
+
+    //====== TODO : get the identifier of current variable ======#
+   // 								  #
+  // string identifier  = var_from_tab_symbol.get_identifier();    #
+ //								    #
+//===================================================================#
+
 
    	res = var_from_tab_symbol.get_type() + " " ; // + identifier + ";"
 	

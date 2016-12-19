@@ -13,8 +13,8 @@ because they are classes how herite from Iterative_instruction like (repeat) and
 class Iterative_instruction :
         public Node /*public Instruction*/  { // <- ie : Iterative_instruction can't herite from Instruction because the bloc for or while can have multiple instructions
 protected:
-	std::vector<Instruction> instructions; // <- ie all instructions
 	Condition condition; // <- ie  the Condition
+	std::vector<Instruction> instructions; // <- ie all instructions
 	//int Iterative_instruction_type;
 public:
 	Iterative_instruction(); //<- ie

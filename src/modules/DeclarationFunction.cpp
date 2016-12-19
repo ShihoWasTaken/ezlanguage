@@ -9,7 +9,7 @@ using namespace std;
 DeclarationFunction::DeclarationFunction(function func)
 {
 	func_from_symbol = func;
-	next = new DeclarationFunction;
+// 	next = new DeclarationFunction;
 }
 
 DeclarationFunction::DeclarationFunction(function func, DeclarationFunction* _next){
@@ -17,7 +17,7 @@ DeclarationFunction::DeclarationFunction(function func, DeclarationFunction* _ne
 	next = next;
 }
 
-void DeclarationFunction::setfunction(function& func){
+void DeclarationFunction::setFunction(function& func){
 	func_from_symbol = func;
 }
 
@@ -29,7 +29,7 @@ DeclarationFunction* DeclarationFunction::getNext(){
 	return next;
 }
 
-function DeclarationFunction::getfunction(){
+function DeclarationFunction::getFunction(){
 	return func_from_symbol;
 }
 
@@ -40,11 +40,11 @@ string DeclarationFunction::translate() {
     string return_type = func_from_symbol.get_returnType();
 
 
-    //====== TODO : get the identifier from function class ======\\
-   // 															  \\
-  //  string identifier  = func_from_symbol.get_identifier();      \\
- // 															    \\
-//===================================================================\\
+    //====== TODO : get the identifier from function class ======#
+   // 								  #
+  //  string identifier  = func_from_symbol.get_identifier();      #
+ // 								    #
+//===================================================================#
 
     vector<string> params = func_from_symbol.get_param();
 

@@ -12,7 +12,7 @@ protected:
 public:
 
 Instruction();
-string translate();
+std::string translate();
 ~Instruction();
 
 };

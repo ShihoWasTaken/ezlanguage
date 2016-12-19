@@ -2,7 +2,7 @@
 // author : Lahyani Zakaria
 //
 
-#include "DeclarationConstante.h"
+#include "DeclarationConstant.h"
 
 using namespace std;
 
@@ -10,7 +10,7 @@ using namespace std;
 DeclarationConstante::DeclarationConstante(variable constante)
 {
 	const_from_variable = constante;
-	next_const = new DeclarationConstante;
+// 	next_const = new DeclarationConstante;
 }
 
 DeclarationConstante::DeclarationConstante(variable constante, DeclarationConstante* _next){
@@ -41,11 +41,11 @@ string DeclarationConstante::translate() {
 		just found the type .
     */
     
-    //====== TODO : get the identifier of current variable ======\\
-   // 															  \\
-  //  string identifier  = const_from_variable.get_identifier();   \\
- // 															    \\
-//===================================================================\\
+    //====== TODO : get the identifier of current variable ======#
+   // 								  #
+  //  string identifier  = const_from_variable.get_identifier();   #
+ // 								    #
+// ===================================================================#
 
    	res = "const " + const_from_variable.get_type() + " " ; // + identifier + ";"
 	

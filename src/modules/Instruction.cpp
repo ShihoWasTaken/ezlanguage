@@ -1,6 +1,8 @@
 #include "Instruction.h"
 
-string Instruction::translate(){};
-Instruction::Instruction(){};
-Instruction::~Instruction(){};
+using namespace std;
+
+Instruction::Instruction(){}
+string Instruction::translate(){ return ""; }
+Instruction::~Instruction(){}
 

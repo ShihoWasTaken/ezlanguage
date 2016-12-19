@@ -5,7 +5,7 @@
 #ifndef DECLARATION_CONSTANTE_H
 #define DECLARATION_CONSTANTE_H
 
-
+#include "Node.h"
 #include "variable.h"
 
 /**
@@ -41,6 +41,6 @@ public:
 	DeclarationConstante* getNext();
 	variable getConstante();
 
-    string translate();
+	std::string translate();
 };
 #endif

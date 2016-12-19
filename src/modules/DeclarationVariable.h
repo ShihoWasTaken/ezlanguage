@@ -6,6 +6,8 @@
 #define DECLARATION_VARIABLE_H
 
 #include <string>
+
+#include "Node.h"
 #include "variable.h"
 
 /**
@@ -18,9 +20,9 @@
 class DeclarationVariable : public Node {
 protected:
 	// variable instanciated by "variable" class 
-	variable var_from_tab_symbol; 
+	variable var_from_tab_symbol;
 	// pointer to the next declaration of a variable
-	DeclarationVariable* next_var; 
+	DeclarationVariable* next_var;
 
 public:
 	DeclarationVariable(variable var);
@@ -36,7 +38,7 @@ public:
 	DeclarationVariable* getNext();
 	variable getVariable();
 
-    string translate();
+	std::string translate();
 
 };
 #endif
