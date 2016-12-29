@@ -54,7 +54,8 @@ ROOT:
   next_line_null declarations_list  statement_sequence END_OF_FILE{ cout << "Fichier parsé." << endl; return 0;}
 ;
 
-next_line_null: /* can be empty */
+next_line_null:
+ /* can be empty */
 | next_line {}
 
 next_line:  // one or several new line
