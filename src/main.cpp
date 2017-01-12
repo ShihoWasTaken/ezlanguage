@@ -78,7 +78,7 @@ void parse_to_cpp(vector<char*> fic_ezl, string &input_files){
 
                 fichier_tmp = fichier_tmp.substr(fichier_tmp.find_last_of("/")+1, fichier_tmp.find_last_of(".") - fichier_tmp.find_last_of("/"));
                 fichier_tmp +="cpp";
-                FILE * cpp_file = fopen(fichier_tmp.c_str(), "w");
+                FILE * cpp_file = fopen(fichier_tmp.c_str(), "w");		
 				
 				// cas où la création du fichier échoue
                 if(cpp_file == NULL){
@@ -113,6 +113,24 @@ void display(vector<char*> fic_ezl){
 }
 
 
+void exec_cpp(std::string commande_gpp, std::string output_name){
+	cout << "commande cpp: " << commande_gpp << endl;
+	if(help != 1){
+		cout << commande_gpp << endl;
+		system(commande_gpp.c_str());
+		if(no_execution != 1){
+			if(output_name != ""){
+				string tmp_output= "./" + output_name;	
+				system(tmp_output.c_str());
+			}else{
+				string tmp_output= "./a.out";	
+				system(tmp_output.c_str());
+			}
+		}
+		cout << "\033[1;36mFin du parsing\033[0m" << endl;
+	}
+}
+
 /**
  * Point d'entrée
  * @param argc
@@ -128,12 +146,6 @@ int main(int argc , char ** argv){
 
     // vecteurs des fichiers EZ à traiter
     vector<char*> fic_ezl;
-
-	// name of the file to test in the test repository after option --test
-	string test_file_name;
-
-	// emplacement du répertoire contenant les fichiers de tests
-	string test_rep_path = "../tests/";
 
 	//boucle pour les arguments en ligne de commande programmés
 	while(1){
@@ -205,20 +217,6 @@ int main(int argc , char ** argv){
 					commande_gpp += "-O"+string(optarg)+" "; 
 				}
 				break;
-
-			// utilisé pour tester les fichiers dans le répertoire tests
-			case 't':
-				cout << "option de test reconnue" << endl;
-				test_file_name = test_rep_path+optarg;
-				if(file_test_exists(test_file_name)){
-					fic_ezl.push_back((char*)test_file_name.c_str());
-					no_execution = true;
-				}
-				else{
-					cerr << "fichier test: " << test_rep_path+test_file_name << " introuvable." << endl;
-					exit(EXIT_FAILURE);
-				}
-				break;
 			// Option inconnue, s'il y a une option avec un tiret ou deux, c'est forcement autre chose qu'un fichier donc erreur
 			case '?':
 				cout << "Unknown option : " << option_index << endl;
@@ -258,22 +256,8 @@ int main(int argc , char ** argv){
 
 	commande_gpp += " " + input_files;
 
-	cout << "commande cpp: " << commande_gpp << endl;
-
-	if(help != 1){
-		cout << commande_gpp << endl;
-		system(commande_gpp.c_str());
-		if(no_execution != 1){
-			if(output_name != ""){
-				string tmp_output= "./" + output_name;	
-				system(tmp_output.c_str());
-			}else{
-				string tmp_output= "./a.out";	
-				system(tmp_output.c_str());
-			}
-		}
-		cout << "\033[1;36mFin du parsing\033[0m" << endl;
-	}
+	//execution des cpp
+	exec_cpp(commande_gpp, output_name);
 
     exit(EXIT_SUCCESS);
 }
