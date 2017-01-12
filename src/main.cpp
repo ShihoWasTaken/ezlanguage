@@ -103,50 +103,39 @@ bool file_test_exists(string filename){
  */
 
 void parse_to_cpp(vector<char*> fic_ezl, string &input_files){
-    for(unsigned int i=0; i<fic_ezl.size(); ++i){
-        cout << "\033[1;36m=====================================\033[0m" << endl;
-        cout << "\033[1;36mFile parsing : \033[1;37m" << fic_ezl[i] << endl;
-        cout << "\033[1;36m=====================================\033[0m" << endl;
-        yyin = fopen(fic_ezl[i], "r");
 
-        if(!directinput){
-            if(!yyin){
-                cerr <<  fic_ezl[i] << ": file opening failed." << endl;
-            }
-            else{
-                // creation des fichiers cpp
-                string fichier_tmp = string(fic_ezl[i]);
+	if(!directinput){
+		for(unsigned int i=0; i<fic_ezl.size(); ++i){
+		    cout << "\033[1;36mFile parsing : \033[1;37m" << fic_ezl[i] << endl;
+		    cout << "\033[1;36m=====================================\033[0m" << endl;
+		    yyin = fopen(fic_ezl[i], "r");
 
-                fichier_tmp = fichier_tmp.substr(fichier_tmp.find_last_of("/")+1, fichier_tmp.find_last_of(".") - fichier_tmp.find_last_of("/"));
-                fichier_tmp +="cpp";
-                FILE * cpp_file = fopen(fichier_tmp.c_str(), "w");		
-				
-				// cas où la création du fichier échoue
-                if(cpp_file == NULL){
-                    cerr << fichier_tmp << ": creation failed;" << endl;
-                    break;
-                }
+	        if(!yyin){
+	            cerr <<  fic_ezl[i] << ": file opening failed." << endl;
+	        }else{
+	            // creation des fichiers cpp
+	            string fichier_tmp = string(fic_ezl[i]);
 
-                // parsing du fichiers ez en fichier cpp
-                yyparse();
+	            fichier_tmp = fichier_tmp.substr(fichier_tmp.find_last_of("/")+1, fichier_tmp.find_last_of(".") - fichier_tmp.find_last_of("/"));
+	            fichier_tmp +="cpp";
+	            FILE * cpp_file = fopen(fichier_tmp.c_str(), "w");		
+			
+		    // cas où la création du fichier échoue
+	            if(cpp_file == NULL){
+	                cerr << fichier_tmp << ": creation failed;" << endl;
+	                break;
+	            }
 
-                yyout = cpp_file;
+	            // parsing du fichiers ez en fichier cpp
+	            yyparse();
 
-                // fermerture du fichier cpp
-                fclose(cpp_file);
-                input_files+=fichier_tmp + " ";
-                
-	            cout << "\033[1;36m=====================================\033[0m" << endl;
-       			cout << endl; 
-            }
-        }
-        else{
-            cout << "\033[1;36m=====================================\033[0m" << endl;
-            cout << "\033[1;36mParsing begining : \033[1;37m" << endl;
-            cout << "\033[1;36m=====================================\033[0m" << endl;
-            yyparse();
-            cout << "\033[1;36m=====================================\033[0m" << endl;
-        }
+	            yyout = cpp_file;
+
+	            // fermerture du fichier cpp
+	            fclose(cpp_file);
+	            input_files+=fichier_tmp + " ";
+	        }
+		}
     }
 }
 
@@ -157,7 +146,7 @@ void display(vector<char*> fic_ezl){
 }
 
 void exec_cpp(std::string commande_gpp, std::string output_name){
-	cout << "commande cpp: " << commande_gpp << endl;
+	//cout << "commande cpp: " << commande_gpp << endl;
 	if(help != 1){
 		cout << commande_gpp << endl;
 		system(commande_gpp.c_str());
