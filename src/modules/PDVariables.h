@@ -1,12 +1,12 @@
-//
-// Created by BADRI Kamal
-//
+/**
+ * @author Kamal Badri
+ */
 
 #ifndef PDVARIABLES_H
 #define PDVARIABLES_H
 
 
-#include "Holder.h"
+#include "PDFunctions.h"
 
 /**
  * This class represents the variables declaration part

@@ -1,6 +1,6 @@
-//
-// Created by BADRI Kamal
-//
+/**
+ * @author Kamal Badri
+ */
 
 #ifndef PDINSTRUCTIONS_H
 #define PDINSTRUCTIONS_H

@@ -5,14 +5,15 @@
 #ifndef PROJECT_DTYPES_H
 #define PROJECT_DTYPES_H
 
-#include "Holder.h"
+#include "PDVariables.h"
 
 class DTypes : public Holder {
 
 public:
     DTypes();
 
-    DTypes(const string &name/* still the other type that should be added afterwards*/);
+    DTypes(const string &name);
+    DTypes(const string &name, PDVariables *son);
 
     string translate();
 
