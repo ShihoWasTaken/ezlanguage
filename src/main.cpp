@@ -150,6 +150,29 @@ void parse_to_cpp(vector<char*> fic_ezl, string &input_files){
     }
 }
 
+void display(vector<char*> fic_ezl){
+	for(unsigned int i = 0; i < fic_ezl.size(); i++){
+		cout << fic_ezl[i] << endl;
+	}
+}
+
+void exec_cpp(std::string commande_gpp, std::string output_name){
+	cout << "commande cpp: " << commande_gpp << endl;
+	if(help != 1){
+		cout << commande_gpp << endl;
+		system(commande_gpp.c_str());
+		if(no_execution != 1){
+			if(output_name != ""){
+				string tmp_output= "./" + output_name;	
+				system(tmp_output.c_str());
+			}else{
+				string tmp_output= "./a.out";	
+				system(tmp_output.c_str());
+			}
+		}
+		cout << "\033[1;36mFin du parsing\033[0m" << endl;
+	}
+}
 
 /**
  * Point d'entrée
@@ -247,18 +270,6 @@ int main(int argc , char ** argv){
 					commande_gpp += "-O"+string(optarg)+" "; 
 				}
 				break;
-			case 't':
-				//cout << "option de test reconnue" << endl;
-				test_file_name = test_rep_path+optarg;
-				if(file_test_exists(test_file_name)){
-					fic_ezl.push_back((char*)test_file_name.c_str());
-				}
-				else{
-					cerr << "fichier test: " << test_rep_path+test_file_name << " introuvable." << endl;
-					exit(EXIT_FAILURE);
-				}
-				break;
-			// Option inconnue, s'il y a une option avec un tiret ou deux, c'est forcement autre chose qu'un fichier donc erreur
 			case '?':
 				cout << "Unknown option : " << option_index << endl;
 				exit(EXIT_FAILURE);
@@ -295,27 +306,8 @@ int main(int argc , char ** argv){
 	// Parse tous les fichiers ez contenus dans fic_ez en fichier cpp et les ajoute dans input_files 
 	parse_to_cpp(fic_ezl, input_files);
 
-	commande_gpp += input_files;
-
-	if(help != 1){
-		if(no_cpp != 1){
-			cout << commande_gpp << endl;
-			int ret_value = system((commande_gpp).c_str());
-			if(ret_value != 0 ){
-				cerr << "Error during c++ compilation" << endl;
-			}
-			if(no_execution != 1){
-				if(output_name != ""){
-					string tmp_output= "./" + output_name;	
-					system(tmp_output.c_str());
-				}else{
-					string tmp_output= "./a.out";	
-					system(tmp_output.c_str());
-				}
-			}
-		}
-		cout << "\033[1;36mFin du parsing\033[0m" << endl;
-	}
+	//execution des cpp
+	exec_cpp(commande_gpp, output_name);
 
     exit(EXIT_SUCCESS);
 }
