@@ -208,6 +208,7 @@ int main(int argc , char ** argv){
 
 			case 'w':
 				//cout << "Displays warning messages" << endl;
+				commande_gpp += "-Wall ";
 				break;
 
 			// Ajoute l'option -o(1..3) au compilateur g++
