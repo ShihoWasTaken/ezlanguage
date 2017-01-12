@@ -113,6 +113,24 @@ void display(vector<char*> fic_ezl){
 }
 
 
+void exec_cpp(std::string commande_gpp, std::string output_name){
+	cout << "commande cpp: " << commande_gpp << endl;
+	if(help != 1){
+		cout << commande_gpp << endl;
+		system(commande_gpp.c_str());
+		if(no_execution != 1){
+			if(output_name != ""){
+				string tmp_output= "./" + output_name;	
+				system(tmp_output.c_str());
+			}else{
+				string tmp_output= "./a.out";	
+				system(tmp_output.c_str());
+			}
+		}
+		cout << "\033[1;36mFin du parsing\033[0m" << endl;
+	}
+}
+
 /**
  * Point d'entrée
  * @param argc
@@ -205,14 +223,13 @@ int main(int argc , char ** argv){
 
 			// utilisé pour tester les fichiers dans le répertoire tests
 			case 't':
-				cout << "option de test reconnue" << endl;
 				test_file_name = test_rep_path+optarg;
 				if(file_test_exists(test_file_name)){
 					fic_ezl.push_back((char*)test_file_name.c_str());
 					no_execution = true;
 				}
 				else{
-					cerr << "fichier test: " << test_rep_path+test_file_name << " introuvable." << endl;
+					cerr << "file '" << test_rep_path+test_file_name << "' not found." << endl;
 					exit(EXIT_FAILURE);
 				}
 				break;
@@ -255,22 +272,8 @@ int main(int argc , char ** argv){
 
 	commande_gpp += " " + input_files;
 
-	cout << "commande cpp: " << commande_gpp << endl;
-
-	if(help != 1){
-		cout << commande_gpp << endl;
-		system(commande_gpp.c_str());
-		if(no_execution != 1){
-			if(output_name != ""){
-				string tmp_output= "./" + output_name;	
-				system(tmp_output.c_str());
-			}else{
-				string tmp_output= "./a.out";	
-				system(tmp_output.c_str());
-			}
-		}
-		cout << "\033[1;36mFin du parsing\033[0m" << endl;
-	}
+	//execution des cpp
+	exec_cpp(commande_gpp, output_name);
 
     exit(EXIT_SUCCESS);
 }
