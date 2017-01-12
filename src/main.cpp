@@ -184,24 +184,14 @@ int main(int argc , char ** argv){
     int opt;
     string output_name = "";
 
-	// Ligne de commande g++
-	string commande_gpp = "g++ ";
+    // Ligne de commande g++
+    string commande_gpp = "g++ ";
 
     //vecteurs des fichiers a traiter
     vector<char*> fic_ezl;
 
-<<<<<<< HEAD
-
-	// name of the file to test in the test repository after option --test
-	string test_file_name;
-
-	// emplacement du répertoire contenant les fichiers de tests
-	string test_rep_path = "../tests/";
-
-=======
->>>>>>> suppression option t inutile
-	//boucle pour les arguments en ligne de commande programmés
-	while(1){
+    //boucle pour les arguments en ligne de commande programmés
+    while(1){
 		//options
 		static struct option long_options[] = {
 			// flags
@@ -233,15 +223,17 @@ int main(int argc , char ** argv){
 		switch(opt){
 			//flags
 			case 0:
-				if (long_options[option_index].flag != 0)
-					break;
 				// flag indiquant que l' exécutable ne doit pas être lancé après la compilation
 				if (string(long_options[option_index].name) == "noexec"){
-					//cout << "Not launching .exe file..." << endl;
+					clog << "Not launching .exe file after compiling..." << endl;
 				}
-				if (string(long_options[option_index].name) == "nocpp"){
-					//cout << "Not creating cpp file..." << endl;
-				}
+				if(string(long_options[option_index].name) == "directinput"){
+					no_execution = 1;
+		        	cout << "\033[1;36m Manual parsing begining : \033[1;37m" << endl;
+         		   	cout << "\033[1;36m=====================================\033[0m" << endl;
+         		   	yyparse();
+         		   	cout << "\033[1;36m=====================================\033[0m" << endl;
+        		}
 				break;
 			// Compiler options computing
 				
