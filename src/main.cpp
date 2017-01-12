@@ -78,7 +78,7 @@ void parse_to_cpp(vector<char*> fic_ezl, string &input_files){
 
                 fichier_tmp = fichier_tmp.substr(fichier_tmp.find_last_of("/")+1, fichier_tmp.find_last_of(".") - fichier_tmp.find_last_of("/"));
                 fichier_tmp +="cpp";
-                FILE * cpp_file = fopen(fichier_tmp.c_str(), "w");
+                FILE * cpp_file = fopen(fichier_tmp.c_str(), "w");		
 				
 				// cas où la création du fichier échoue
                 if(cpp_file == NULL){
@@ -147,12 +147,6 @@ int main(int argc , char ** argv){
     // vecteurs des fichiers EZ à traiter
     vector<char*> fic_ezl;
 
-	// name of the file to test in the test repository after option --test
-	string test_file_name;
-
-	// emplacement du répertoire contenant les fichiers de tests
-	string test_rep_path = "../tests/";
-
 	//boucle pour les arguments en ligne de commande programmés
 	while(1){
 		//options
@@ -168,7 +162,6 @@ int main(int argc , char ** argv){
 			{"optimisation",	required_argument,	0, 	'O'},
 			{"warning",			no_argument,		0, 	'w'},
 			{"output",			required_argument,	0, 	'o'},
-			{"test",			required_argument,	0, 	't'},
 			{0, 0, 0, 0}
 		};
 		
@@ -222,19 +215,6 @@ int main(int argc , char ** argv){
 				//cout << "Optimization option level: " << optarg << endl;
 				if(atoi(optarg) >= 1 && atoi(optarg) <= 3){
 					commande_gpp += "-O"+string(optarg)+" "; 
-				}
-				break;
-
-			// utilisé pour tester les fichiers dans le répertoire tests
-			case 't':
-				test_file_name = test_rep_path+optarg;
-				if(file_test_exists(test_file_name)){
-					fic_ezl.push_back((char*)test_file_name.c_str());
-					no_execution = true;
-				}
-				else{
-					cerr << "file '" << test_rep_path+test_file_name << "' not found." << endl;
-					exit(EXIT_FAILURE);
 				}
 				break;
 			// Option inconnue, s'il y a une option avec un tiret ou deux, c'est forcement autre chose qu'un fichier donc erreur
