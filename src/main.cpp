@@ -96,12 +96,6 @@ void parse_to_cpp(vector<char*> fic_ezl, string &input_files){
                 input_files+=fichier_tmp + " ";
             }
         }
-        else{
-            cout << "\033[1;36mParsing begining : \033[1;37m" << endl;
-            cout << "\033[1;36m=====================================\033[0m" << endl;
-            yyparse();
-            cout << "\033[1;36m=====================================\033[0m" << endl;
-        }
     }
 }
 
@@ -179,12 +173,17 @@ int main(int argc , char ** argv){
 		switch(opt){
 			//flags
 			case 0:
-				if (long_options[option_index].flag != 0)
-					break;
 				// flag indiquant que l' exécutable ne doit pas être lancé après la compilation
 				if (string(long_options[option_index].name) == "noexec"){
 					//cout << "Not launching .exe file..." << endl;
 				}
+				if(string(long_options[option_index].name) == "directinput"){
+					no_execution = 1;
+		        	cout << "\033[1;36mParsing begining : \033[1;37m" << endl;
+         		   	cout << "\033[1;36m=====================================\033[0m" << endl;
+         		   	yyparse();
+         		   	cout << "\033[1;36m=====================================\033[0m" << endl;
+        		}
 				break;
 
 			// Compiler options computing
@@ -201,11 +200,7 @@ int main(int argc , char ** argv){
 				commande_gpp += "-o "+string(optarg)+" ";
 				output_name = string(optarg);
 				break;
-
-			case 'v':
-				verbose_flag = 1;
-				break; 
-
+				
 			case 'w':
 				//cout << "Displays warning messages" << endl;
 				break;
