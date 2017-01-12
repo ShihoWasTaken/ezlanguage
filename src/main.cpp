@@ -150,7 +150,6 @@ int main(int argc , char ** argv){
 			{"optimisation",	required_argument,	0, 	'O'},
 			{"warning",			no_argument,		0, 	'w'},
 			{"output",			required_argument,	0, 	'o'},
-			{"test",			required_argument,	0, 	't'},
 			{0, 0, 0, 0}
 		};
 		
