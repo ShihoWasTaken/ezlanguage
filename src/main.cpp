@@ -14,7 +14,7 @@ extern int yyparse();
 extern FILE* yyout;
 
 //FLAGS
-static int verbose_flag;
+int verbose_flag;
 int directinput = 0;
 int no_execution = 0;
 int help = 0;
@@ -208,6 +208,10 @@ int main(int argc , char ** argv){
 				commande_gpp += "-o "+string(optarg)+" ";
 				output_name = string(optarg);
 				break;
+
+			case 'v':
+				verbose_flag = 1;
+				break; 
 
 			case 'w':
 				//cout << "Displays warning messages" << endl;

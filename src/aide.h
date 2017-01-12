@@ -22,7 +22,7 @@ OPTIONS \n\
 	-O1, --optimisation=1		: Reduces the execution time, first level of optimization \n\
 	-O2, --optimisation=2		: Same as O1 lvl2 \n\
 	-O3, --optimisation=3		: Same as O2 lvl3 \n\
-	-v, --verbose			: Displays all the compilation steps in the command prompt \n\
+	--verbose			: Displays all the compilation steps in the command prompt \n\
 	-w, --warning			: Displays all the warning messages \n\
  \n\
 SEE ALSO \n\
