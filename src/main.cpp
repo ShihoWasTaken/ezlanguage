@@ -134,6 +134,9 @@ void parse_to_cpp(vector<char*> fic_ezl, string &input_files){
 	            // fermerture du fichier cpp
 	            fclose(cpp_file);
 	            input_files+=fichier_tmp + " ";
+	            
+         		cout << "\033[1;36m=====================================\033[0m" << endl;
+         		cout << endl;
 	        }
 		}
     }
@@ -148,18 +151,20 @@ void display(vector<char*> fic_ezl){
 void exec_cpp(std::string commande_gpp, std::string output_name){
 	//cout << "commande cpp: " << commande_gpp << endl;
 	if(help != 1){
-		cout << commande_gpp << endl;
-		system(commande_gpp.c_str());
-		if(no_execution != 1){
-			if(output_name != ""){
-				string tmp_output= "./" + output_name;	
-				system(tmp_output.c_str());
-			}else{
-				string tmp_output= "./a.out";	
-				system(tmp_output.c_str());
+		if(directinput != 1){
+			cout << commande_gpp << endl;
+			system(commande_gpp.c_str());
+			if(no_execution != 1){
+				if(output_name != ""){
+					string tmp_output= "./" + output_name;	
+					system(tmp_output.c_str());
+				}else{
+					string tmp_output= "./a.out";	
+					system(tmp_output.c_str());
+				}
 			}
 		}
-		cout << "\033[1;36mFin du parsing\033[0m" << endl;
+		cout << "\033[1;36mParsing ended.\033[0m" << endl;
 	}
 }
 
@@ -275,11 +280,11 @@ int main(int argc , char ** argv){
 			parse_argv_ext(ext_ez[i].c_str(), fic_ezl, argv[j]);
 			//cout << "ajout" << fic_ezl.size() << endl;
 		}
-	}        
+	}     
     
     //test des arguments restant
 	for(int i=optind+1; i<argc; ++i){
-		//cout<< "Parsing the file : "<< argv[i]<< endl;
+		//cout<< "Parsing the "<< i<< " file : "<< argv[i]<< endl;
 		if(!(find(fic_ezl.begin(), fic_ezl.end(), argv[i]) != fic_ezl.end())){
 			cerr << "Invalid file or unknown option : " << argv[i] << endl;
 			exit(EXIT_FAILURE);
