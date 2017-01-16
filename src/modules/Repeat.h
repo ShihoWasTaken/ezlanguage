@@ -1,4 +1,3 @@
-//@author Antoine GARNIER
 #ifndef REPEAT_H
 #define REPEAT_H
 
@@ -6,10 +5,13 @@
 #include <vector>
 #include <string.h>
 
-//special files no to forget to import
+/**
+ * special files no to forget to import
+ * @author Antoine GARNIER
+ */
 #include "Iterative_instruction.h"
 
-/*
+/**
  * Using :
  * repeat
  *    instruction_1

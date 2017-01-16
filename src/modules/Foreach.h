@@ -1,4 +1,3 @@
-//@author : GINISTY Valentin
 #ifndef FOREACH_H
 #define FOREACH_H
 
@@ -7,7 +6,10 @@
 
 using namespace std;
 
-//using example : foreach v in vector (it is translated in c++ like this : for(auto v : vector))
+/**
+ * using example : foreach v in vector (it is translated in c++ like this : for(auto v : vector))
+ * @author : GINISTY Valentin
+ */
 class Foreach :
         public Iterative_instruction {
 protected:

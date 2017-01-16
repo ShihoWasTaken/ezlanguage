@@ -1,4 +1,3 @@
-//@author : GARNIER Antoine
 #ifndef NODE_H
 #define NODE_H
 
@@ -6,7 +5,10 @@
 
 using namespace std;
 
-//Basic class, used to structure the others classes as nodes of the main tree
+/**
+ * Basic class, used to structure the others classes as nodes of the main tree
+ * @author : GARNIER Antoine
+ */
 class Node{
 protected:
     string name;

@@ -1,12 +1,13 @@
-//@author : Ismail ELFAQIR
-
 #ifndef ITERATIVE_INSTRUCTION_H
 #define ITERATIVE_INSTRUCTION_H
 
 #include "Node.h" 
 #include "Condition.h"
 
-//boucles : forall, foreach, while, repeat
+/**
+ * boucles : forall, foreach, while, repeat
+ * @author : Ismail ELFAQIR
+ */
 class Iterative_instruction :
         public Node /*public Instruction*/  { // <-  Iterative_instruction can't herite from Instruction because the bloc for or while can have multiple instructions
 protected:

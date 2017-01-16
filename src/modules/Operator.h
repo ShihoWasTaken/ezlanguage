@@ -1,4 +1,3 @@
-//@author : GARNIER Antoine
 #ifndef OPERATOR_H
 #define OPERATOR_H
 
@@ -17,6 +16,9 @@
 
 using namespace std;
 
+/**
+ * @author : GARNIER Antoine
+ */
 class Operator
         : public Node{
 

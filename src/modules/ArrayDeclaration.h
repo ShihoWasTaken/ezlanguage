@@ -1,4 +1,3 @@
-//@author : Ismail ELFAQIR
 #ifndef ARRAYDECLARATION_H
 #define ARRAYDECLARATION_H
 
@@ -6,6 +5,9 @@
 #include "Node.h"
 #include "Variable.h"
 
+/**
+ * @author : Ismail ELFAQIR
+ */
 class ArrayDeclaration :
         public Node {
 	protected:

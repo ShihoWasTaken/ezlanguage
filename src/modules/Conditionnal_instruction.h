@@ -1,4 +1,3 @@
-//@author : Ismail ELFAQIR
 #ifndef CONDITIONNAL_INSTRUCTION_H
 #define CONDITIONNAL_INSTRUCTION_H
 
@@ -6,9 +5,12 @@
 #include "Condition.h" 
 
 
-//Class for the instructions :
-// ez language : If / c++ : if
-// ez language : when / c++ : switch
+/**
+ * Represents conditional instructions :
+ * ez language : If / c++ : if
+ * ez language : when / c++ : switch
+ * @author : Ismail ELFAQIR
+ */
 class Conditionnal_instruction :
        public Node/*public Instruction*/ { // Conditionnal_instruction can't herite from Instruction because the bloc if can have multiple instructions
        									 //  for more see the language validated document by ANDRES Hervé "les_fonctions_procédures_conditions"

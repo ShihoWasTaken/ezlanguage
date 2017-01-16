@@ -1,4 +1,3 @@
-//@author : GINISTY Valentin
 #ifndef FORALL_H
 #define FORALL_H
 
@@ -6,8 +5,11 @@
 #include <string>
 #include "String_addon.h"
 
-//example : forall i in 1..10 step 2 (step is optionnal)
-//Use of Declaration, Condition and Instruction
+/**
+ * example : forall i in 1..10 step 2 (step is optionnal)
+ * Use of Declaration, Condition and Instruction
+ * @author : GINISTY Valentin
+ */
 class Forall
         : public Iterative_instruction {
 protected:

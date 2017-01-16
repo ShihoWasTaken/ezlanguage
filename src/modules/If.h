@@ -1,4 +1,3 @@
-//@author : Ismail ELFAQIR
 #ifndef IF_H
 #define IF_H
 
@@ -8,6 +7,9 @@
 #define block_else_if 2 
 #define block_else 3
 
+/**
+ * @author : Ismail ELFAQIR
+ */
 class If 
 	: public Conditionnal_instruction {
 		

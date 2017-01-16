@@ -1,9 +1,11 @@
-//@author : GINISTY Valentin
 #ifndef DECLARATION_H
 #define DECLARATION_H
 
 #include "Node.h"
 
+/** 
+ * @author : GINISTY Valentin
+ */
 class Declaration :
         public Node {
 protected:

@@ -1,4 +1,3 @@
-//@author Antoine GARNIER
 #ifndef WHILE_H
 #define WHILE_H
 
@@ -9,7 +8,7 @@
 //special files no to forget to import
 #include "Iterative_instruction.h"
 
-/*
+/**
  * Using :
  * while condition do
  *    instruction_1
@@ -17,6 +16,7 @@
  *    ...
  *    instruction_n
  * end while
+ * @author Antoine GARNIER
  */
 class While :
         public Iterative_instruction {
