@@ -7,7 +7,10 @@
 using namespace std;
 
 /**
- * using example : foreach v in vector (it is translated in c++ like this : for(auto v : vector))
+ * @brief 
+ * 
+ * @details using example : foreach v in vector (it is translated in c++ like this : for(auto v : vector))
+ * 
  * @author : GINISTY Valentin
  */
 class Foreach :

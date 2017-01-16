@@ -8,7 +8,7 @@
 #include "HashElement.h"
 
 /**
- * Means a function, a procedure, or a method inside a class
+ * @brief Means a function, a procedure, or a method inside a class
  * @author Johan Defaye
  */
 class Function : public HashElement {

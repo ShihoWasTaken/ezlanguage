@@ -6,8 +6,11 @@
 #include "String_addon.h"
 
 /**
- * example : forall i in 1..10 step 2 (step is optionnal)
- * Use of Declaration, Condition and Instruction
+ * @brief 
+ * 
+ * @details example : forall i in 1..10 step 2 (step is optionnal)
+ * Use Declaration, Condition and Instruction
+ * 
  * @author : GINISTY Valentin
  */
 class Forall

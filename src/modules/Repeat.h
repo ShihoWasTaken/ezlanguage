@@ -5,20 +5,21 @@
 #include <vector>
 #include <string.h>
 
-/**
- * special files no to forget to import
- * @author Antoine GARNIER
- */
+//special files no to forget to import
 #include "Iterative_instruction.h"
 
 /**
- * Using :
+ * @brief
+ * 
+ * @details Using :
  * repeat
  *    instruction_1
  *    instruction_2
  *    ...
  *    instruction_n
  * until condition
+ * 
+ * @author Antoine GARNIER
  */
 class Repeat :
         public Iterative_instruction {

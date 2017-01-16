@@ -4,8 +4,10 @@
 #include <string>
 #include "Node.h"
 
-///boolean value (used in the loop)
 /**
+ * @brief 
+ * 
+ * @details boolean value (used in the loop)
  * @author Antoine GARNIER
  */
 class Condition :

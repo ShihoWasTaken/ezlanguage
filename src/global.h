@@ -2,7 +2,7 @@
 #define GLOBAL_H
 
 /**
- * Structure used to exchange value between flex and bison during parsing
+ * @struct s_mon_type used to exchange value between flex and bison during parsing
  * @authors Valérian De Leeuw, Florentin Noël
  */
 typedef struct s_mon_type {

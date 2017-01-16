@@ -17,6 +17,7 @@
 using namespace std;
 
 /**
+ * @brief 
  * @author : GARNIER Antoine
  */
 class Operator

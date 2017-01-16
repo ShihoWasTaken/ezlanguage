@@ -6,9 +6,11 @@
 
 
 /**
- * Represents conditional instructions :
+ * @brief Represents conditional instructions
+ * 
  * ez language : If / c++ : if
  * ez language : when / c++ : switch
+ * 
  * @author : Ismail ELFAQIR
  */
 class Conditionnal_instruction :

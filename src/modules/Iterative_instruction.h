@@ -5,7 +5,10 @@
 #include "Condition.h"
 
 /**
- * boucles : forall, foreach, while, repeat
+ * @brief 
+ * 
+ * @details loops : forall, foreach, while, repeat
+ * 
  * @author : Ismail ELFAQIR
  */
 class Iterative_instruction :

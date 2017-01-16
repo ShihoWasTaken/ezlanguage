@@ -6,7 +6,7 @@
 using namespace std;
 
 /**
- * Basic class, used to structure the others classes as nodes of the main tree
+ * @brief Base class, used to structure the others classes as nodes of the main tree
  * @author : GARNIER Antoine
  */
 class Node{

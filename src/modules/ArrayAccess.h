@@ -7,7 +7,8 @@
 
 /**
  * @class AccessArray
- * meant to translate an access to array by index 
+ * @brief meant to translate an access to array by index 
+ * 
  * example of translation my_array[5] -> here index=5  
  * @author Ismail ELFAQIR
  */

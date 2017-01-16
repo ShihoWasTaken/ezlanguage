@@ -9,13 +9,16 @@
 #include "Iterative_instruction.h"
 
 /**
- * Using :
+ * @brief 
+ * 
+ * @details Using :
  * while condition do
  *    instruction_1
  *    instruction_2
  *    ...
  *    instruction_n
  * end while
+ * 
  * @author Antoine GARNIER
  */
 class While :

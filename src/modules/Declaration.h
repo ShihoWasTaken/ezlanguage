@@ -4,6 +4,7 @@
 #include "Node.h"
 
 /** 
+ * @brief 
  * @author : GINISTY Valentin
  */
 class Declaration :

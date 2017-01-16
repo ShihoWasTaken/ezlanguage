@@ -6,6 +6,7 @@
 #include "Variable.h"
 
 /**
+ * @brief 
  * @author : Ismail ELFAQIR
  */
 class ArrayDeclaration :
