@@ -35,6 +35,14 @@ public:
 //    The getter is located in the superclass
 //    Condition get_condition(){ return repeat_condition; }
 
+    /**
+     * @brief Translation of the instruction into it's C++ counterpart
+     * @return a string containing the C++ code of the repeat (for) instruction
+     * 
+     * The instance will be translated with it's C++ equivalent using its informations
+     * All subclasses, must reimplement this method so that the translation corresponds
+     * to their specifications, specificities and own values
+     */
     std::string translate();
 
 };

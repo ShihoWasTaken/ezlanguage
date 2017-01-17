@@ -8,6 +8,7 @@
 /**
  * @brief 
  * @author : Ismail ELFAQIR
+ * 
  */
 class ArrayDeclaration :
         public Node {
@@ -91,7 +92,14 @@ class ArrayDeclaration :
 		/* * * * * * * *
 		* Translation  *
 		* * * * * * * **/
-	
+		
+		/**
+		 * @brief Translation of the instruction into it's C++ counterpart
+		 * @return a string containing the C++ code of the declaration
+		 * 
+		 * The instance will be translated with it's C++ equivalent using its informations
+		 * The translation corresponds to its specifications, specificities and values
+		 */
 		std::string translate();
 };
 

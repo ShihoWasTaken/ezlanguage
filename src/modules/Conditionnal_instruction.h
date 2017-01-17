@@ -7,11 +7,10 @@
 
 /**
  * @brief Represents conditional instructions
+ * @author : Ismail ELFAQIR
  * 
  * ez language : If / c++ : if
  * ez language : when / c++ : switch
- * 
- * @author : Ismail ELFAQIR
  */
 class Conditionnal_instruction :
        public Node/*public Instruction*/ { // Conditionnal_instruction can't herite from Instruction because the bloc if can have multiple instructions
@@ -75,6 +74,15 @@ class Conditionnal_instruction :
 		/* * * * * * * *
 		* Translation  *
 		* * * * * * * **/
+		
+		/**
+		 * @brief Translation of the instruction into it's C++ counterpart
+		 * @return a string containing the C++ code of the instruction
+		 * 
+		 * The instance will be translated with it's C++ equivalent using its informations
+		 * All subclasses, must reimplement this method so that the translation corresponds
+		 * to their specifications, specificities and own values
+		 */
 		virtual string translate() =0;
 };
 

@@ -8,6 +8,7 @@
 /**
  * @brief An element to be used in a hash table
  * @author Johan defaye
+ * 
  */
 class HashElement { 
   

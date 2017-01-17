@@ -38,7 +38,14 @@ public:
 
     //getters
 //    Condition get_condition(){ return while_condition; }
-
+    
+    /**
+     * @brief Translation of the instruction into it's C++ counterpart
+     * @return a string containing the C++ code of the while instruction
+     * 
+     * The instance will be translated with it's C++ equivalent using its informations
+     * The translation corresponds to its specifications, specificities and values
+     */
     std::string translate();
 };
 
