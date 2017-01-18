@@ -3,12 +3,15 @@
 *~
 .directory
 
+# Generated documentation
+docs/
+
 # Build results
 *.cmake
 bin/*
-!bin/.dummy.txt
+!bin/*.md
 obj/*
-!obj/.dummy.txt
+!obj/*.md
 *.o
 *.gch
 
@@ -16,4 +19,4 @@ obj/*
 *.user
 
 #CLion files
-.idea/workspace.xml
+.idea/*
