@@ -3,7 +3,7 @@
 *~
 .directory
 
-# Generated files
+# Generated documentation
 docs/*
 !docs/*.md
 
