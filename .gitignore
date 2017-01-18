@@ -3,6 +3,10 @@
 *~
 .directory
 
+# Generated files
+docs/*
+!docs/*.md
+
 # Build results
 *.cmake
 bin/*
@@ -17,3 +21,4 @@ obj/*
 
 #CLion files
 .idea/*
+

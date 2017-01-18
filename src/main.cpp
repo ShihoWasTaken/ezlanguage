@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <fstream>
+#include "aide.h"
 
 using namespace std;
 
@@ -18,43 +19,6 @@ int directinput = 0;
 int no_execution = 0;
 int no_cpp = 0;
 int help = 0;
-
-
-//aide
-string AIDE_PROG = "\
-EZL \n\
-	 \n\
-SYNOPSIS \n\
-	EZL [options] files.. \n\
-	for the options list, see the options section below. \n\
-	 \n\
-DESCRIPTION \n\
-	This is the EZ language compiler, a C based language for beginners. \n\
-	 \n\
-EXAMPLES \n\
-	Some xamples of common usage : \n\
-	EZL example1.ez example2.ez -o example.exe \n\
-	 \n\
-OPTIONS \n\
-	--directinput			: Enable direct input for EZ language \n\
-	-h, --help			: Displays this information \n\
-	--noexec			: Do not launch the executable \n\
-	--nocpp				: Do not convert to cpp \n\
-	-o <file>, --output=<file>	: Name the executable <file> \n\
-	-O1, --optimisation=1		: Reduces the execution time, first level of optimization \n\
-	-O2, --optimisation=2		: Same as O1 lvl2 \n\
-	-O3, --optimisation=3		: Same as O2 lvl3 \n\
-	-v, --verbose			: Displays all the compilation steps in the command prompt \n\
-	-w, --warning			: Displays all the warning messages \n\
- \n\
-SEE ALSO \n\
-   	Full documentation at ezlanguage.com \n\
-   	 \n\
-AUTHOR \n\
-   	M2 SILI 2016 - 2017  \n\
-   	 \n\
-COPYRIGHT \n\
-	Specify your copyright information.\n";
 
 //functions
 //arguments qui ne sont pas prévus, donc des fichiers si la bonne extension, erreur sinon
@@ -119,7 +83,7 @@ void parse_to_cpp(vector<char*> fic_ezl, string &input_files){
 	            fichier_tmp = fichier_tmp.substr(fichier_tmp.find_last_of("/")+1, fichier_tmp.find_last_of(".") - fichier_tmp.find_last_of("/"));
 	            fichier_tmp +="cpp";
 	            FILE * cpp_file = fopen(fichier_tmp.c_str(), "w");		
-			
+
 		    // cas où la création du fichier échoue
 	            if(cpp_file == NULL){
 	                cerr << fichier_tmp << ": creation failed;" << endl;
@@ -181,11 +145,11 @@ int main(int argc , char ** argv){
     // Ligne de commande g++
     string commande_gpp = "g++ ";
 
-    //vecteurs des fichiers a traiter
+    // vecteurs des fichiers EZ à traiter
     vector<char*> fic_ezl;
 
-    //boucle pour les arguments en ligne de commande programmés
-    while(1){
+	//boucle pour les arguments en ligne de commande programmés
+	while(1){
 		//options
 		static struct option long_options[] = {
 			// flags
@@ -229,12 +193,11 @@ int main(int argc , char ** argv){
          		   	cout << "\033[1;36m=====================================\033[0m" << endl;
         		}
 				break;
+
 			// Compiler options computing
-				
 			// Affiche l'aide
 			case 'h':
-				help = 1;
-				
+				help = 1;		
 				// teste l'existence du fichier d'aide
 				cout << AIDE_PROG << endl;
 				break;
@@ -252,6 +215,7 @@ int main(int argc , char ** argv){
 				//cout << "Displays warning messages" << endl;
 				commande_gpp += "-Wall ";
 				break;
+
 			// Ajoute l'option -o(1..3) au compilateur g++
 			case 'O':
 				//cout << "Optimization option level: " << optarg << endl;
@@ -269,14 +233,13 @@ int main(int argc , char ** argv){
 		}
 	}
 	
-	// fic_ezl.push_back("/home/etudiant/Cl…/ezlanguage/tests/exemple.ez");
     // tableaux des extensions des fichiers a traiter
     int nb_ext = 2;
     const string ext_ez[nb_ext] = {".ez", ".ezl"};
 
     //ajout des fichiers a parser
-	for(int i=0; i<nb_ext; ++i){
-		for(int j=optind; j<argc; ++j){
+	for(int i = 0; i < nb_ext; ++i){
+		for(int j = optind; j < argc; ++j){
 			parse_argv_ext(ext_ez[i].c_str(), fic_ezl, argv[j]);
 			//cout << "ajout" << fic_ezl.size() << endl;
 		}
@@ -291,10 +254,12 @@ int main(int argc , char ** argv){
 		}
 	}
 
-	string input_files ="";
+	string input_files = "";
 
 	// Parse tous les fichiers ez contenus dans fic_ez en fichier cpp et les ajoute dans input_files 
 	parse_to_cpp(fic_ezl, input_files);
+
+	commande_gpp += " " + input_files;
 
 	//execution des cpp
 	exec_cpp(commande_gpp, output_name);
