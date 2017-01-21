@@ -13,7 +13,10 @@
 class Iterative_instruction :
         public Node /*public Instruction*/  { // <-  Iterative_instruction can't herite from Instruction because the bloc for or while can have multiple instructions
 protected:
-	Condition *condition; // condition if it's an for or while 
+	Condition condition; // <- ie  the Condition
+	std::vector<Instruction> instructions; // <- ie all instructions
+	//int Iterative_instruction_type;
+
 public:
 	/* * * * * * * * *
 	* CONSTRUCTORS  *

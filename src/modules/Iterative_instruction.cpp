@@ -27,3 +27,8 @@ void Iterative_instruction::setCondition(Condition *c) {
 	condition=c;
 }
 
+void Iterative_instruction::setInstructions(vector<Instruction> &i) {
+	instructions=i;
+}
+
+string Iterative_instruction::translate(){ return ""; }

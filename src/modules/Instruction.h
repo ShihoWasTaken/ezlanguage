@@ -16,6 +16,7 @@ protected:
 public:
 
 Instruction();
+std::string translate();
 ~Instruction();
 
     /**
@@ -26,8 +27,6 @@ Instruction();
     * All subclasses, must reimplement this method so that the translation corresponds
     * to their specifications, specificities and own values
     */
-    virtual string translate() =0;
-
 };
 
 #endif
