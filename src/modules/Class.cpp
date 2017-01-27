@@ -1,5 +1,6 @@
 //@author Ismail ELFAQIR
 #include "Class.h"
+#include "String_addon.h"
 #include <iostream>
 using namespace std;
 
@@ -125,11 +126,8 @@ bool Class::is_in_class(Variable * variable){
 
 string Class::translate() const{
 	
-	string classNameOnUpperCase=m_class->get_id();
-	transform(classNameOnUpperCase.begin(), classNameOnUpperCase.end(), classNameOnUpperCase.begin(), ::toupper);
-
-	string res="#ifndef"+classNameOnUpperCase+"_H\n";
-	res+="#define"+classNameOnUpperCase+"_H\n";
+	string res="#ifndef "+toUpperCase(m_class->get_id())+"_H\n";
+	res+="#define "+toUpperCase(m_class->get_id())+"_H\n";
 	res+"#include <iostream>\n";
 	res+="class "+m_class->get_id()+" {\n";
 		res+="\tpublic:\n";
