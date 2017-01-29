@@ -25,7 +25,7 @@ reel			{entier}("."{entier})?
 
 mot 		    [A-z]+
 
-ID ([a-z]|[A-Z])([a-z]|[A-Z]|[0-9]|_)*
+ID ([a-z]|[A-Z])([a-z]|[A-Z]|[0-9])*
 
 commentaire		(\/\*(.*)\*\/)|(\/\/(.*))
 
@@ -87,12 +87,10 @@ backLine 	\n
 (real|REAL)          return(TYPE_REAL);
 (string|STRING)      return(TYPE_STRING);
 (boolean|BOOLEAN)    return(TYPE_BOOLEAN);
-(shared|SHARED)    return(SHARED);
 
 (if|IF)              return(IF);
 (else|ELSE)          return(ELSE);
 
-(begin|BEGIN)        return(BEGINN);
 (end|END)            return(END);
 
 (when|WHEN)           return(WHEN);
@@ -114,11 +112,6 @@ backLine 	\n
 (procedure|PROCEDURE)       return(PROCEDURE);
 (return|RETURN)             return(RETURN);
 
-(operator|OPERATOR)         return(OPERATOR);
-
-(class|CLASS)              return(CLASS);
-(program|PROGRAM)          return(PROGRAM);
-(destruct|DESTRUCT)                return(DESTRUCT);
 
 (print|PRINT)     { return(PRINT);        }
 

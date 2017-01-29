@@ -1,8 +1,32 @@
+<<<<<<< HEAD
+class A
+begin
+// non static
+  var1 is integer
+  procedure f1() 
+  end procedure
+
+ var2 is shared integer 
+  shared procedure f2() 
+ end procedure
+end class
+=======
 //program person;
 // petit programme de test
+>>>>>>> compilateur
 
-local i, max are integer
+// function main
+program main
+ // non static
+ a is boolean
+ a.var1 = 1
+ a.f1()
+ //static
+ A.var2 = 1;
+ A.f2();
 
+<<<<<<< HEAD
+=======
 
 when 5 +6 is
 	case b==8
@@ -15,3 +39,4 @@ when 5 +6 is
 		x = 8 * 9
 	end case
 end when
+>>>>>>> compilateur

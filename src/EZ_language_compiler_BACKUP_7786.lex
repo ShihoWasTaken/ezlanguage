@@ -92,7 +92,10 @@ backLine 	\n
 (if|IF)              return(IF);
 (else|ELSE)          return(ELSE);
 
+<<<<<<< HEAD
 (begin|BEGIN)        return(BEGINN);
+=======
+>>>>>>> compilateur
 (end|END)            return(END);
 
 (when|WHEN)           return(WHEN);
@@ -118,6 +121,7 @@ backLine 	\n
 
 (class|CLASS)              return(CLASS);
 (program|PROGRAM)          return(PROGRAM);
+(main|MAIN)                return(MAIN);
 (destruct|DESTRUCT)                return(DESTRUCT);
 
 (print|PRINT)     { return(PRINT);        }

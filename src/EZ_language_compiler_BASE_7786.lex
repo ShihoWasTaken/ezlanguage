@@ -25,7 +25,7 @@ reel			{entier}("."{entier})?
 
 mot 		    [A-z]+
 
-ID ([a-z]|[A-Z])([a-z]|[A-Z]|[0-9]|_)*
+ID ([a-z]|[A-Z])([a-z]|[A-Z]|[0-9])*
 
 commentaire		(\/\*(.*)\*\/)|(\/\/(.*))
 
@@ -87,20 +87,20 @@ backLine 	\n
 (real|REAL)          return(TYPE_REAL);
 (string|STRING)      return(TYPE_STRING);
 (boolean|BOOLEAN)    return(TYPE_BOOLEAN);
-(shared|SHARED)    return(SHARED);
 
 (if|IF)              return(IF);
 (else|ELSE)          return(ELSE);
-
-(begin|BEGIN)        return(BEGINN);
-(end|END)            return(END);
+(endif|ENDIF)        return(ENDIF);
 
 (when|WHEN)           return(WHEN);
 (case|CASE)           return(CASE);
+(endcase|ENDCASE)     return(ENDCASE);
 (default|DEFAULT)     return(DEFAULT);
+(endwhen|ENDWHEN)     return(ENDWHEN);
 
 (while|WHILE)         return(WHILE);
 (do|DO)               return(DO);
+(endwhile|ENDWHILE)   return(ENDWHILE);
 
 (repeat|REPEAT)         return(REPEAT);
 (until|UNTIL)           return(UNTIL);
@@ -109,16 +109,14 @@ backLine 	\n
 (for|FOR)        return(FOR);
 (in|IN)          return(IN);
 (step|STEP)      return(STEP);
+(endfor|ENDFOR)  return(ENDFOR);
 
 (function|FUNCTION)         return(FUNCTION);
 (procedure|PROCEDURE)       return(PROCEDURE);
 (return|RETURN)             return(RETURN);
+(endfunction|ENDFUNCTION)   return(ENDFUNCTION);
+(endprocedure|ENDPROCEDURE) return(ENDPROCEDURE);
 
-(operator|OPERATOR)         return(OPERATOR);
-
-(class|CLASS)              return(CLASS);
-(program|PROGRAM)          return(PROGRAM);
-(destruct|DESTRUCT)                return(DESTRUCT);
 
 (print|PRINT)     { return(PRINT);        }
 
