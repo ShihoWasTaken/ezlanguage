@@ -19,3 +19,8 @@ local i, max are integer
 	end when
 end procedure
 
+shared function name() return integer
+BEGIN
+	return 5
+end
+
