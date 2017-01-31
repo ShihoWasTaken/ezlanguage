@@ -50,4 +50,10 @@ begin
   max = v.max(age)
 
   print "maximum of ages = ", max
+<<<<<<< HEAD:tests/person.ez
 end
+=======
+
+end
+
+>>>>>>> compilateur:examples/person.ez
