@@ -1,4 +1,11 @@
-# Options finales
+
+
+
+# Utilisation du compilateur
+EZ_language_compiler [options] fichier
+
+
+# Liste complète des options en ligne de commande
 ## Options de base
 **--output:** spécifie le nom du fichier binaire en sortie.
 Version courte :  -o
