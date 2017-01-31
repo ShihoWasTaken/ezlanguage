@@ -36,9 +36,9 @@ script:
   - ./bin/EZ_language_compiler tests/fichier_de_test.ezl
   - cd examples
 # Launch valid tests
-  - ./valid_tests.sh
+  - sh ./valid_tests.sh
 
 after_success:
 # Launch other tests
-  - ./unvalid_tests.sh
+  - sh ./unvalid_tests.sh
 
