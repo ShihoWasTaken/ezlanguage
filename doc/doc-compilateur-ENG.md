@@ -15,4 +15,4 @@ Short version :  -h
 **--warning:** Displays all the "warning" messages.  
 Short version : -w  
 ## Other options
-**--noexec:** Specifie the compiler to not run the executable generated after the compilation process.
+**--noexec:** Specifies the compiler to not run the executable generated after the compilation process.
