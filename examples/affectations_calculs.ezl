@@ -1,8 +1,8 @@
 program affectations_calculs
-/* Fichier permettant de tester la compilation :
- + de différentes opérations arithmétiques 
- + d'affections à partir du résultats des opérations
-Syntaxe validée */
+// Fichier permettant de tester la compilation :
+// + de différentes opérations arithmétiques 
+// + d'affections à partir du résultats des opérations
+//Syntaxe validée
 
 procedure affectations_calculs()
 local x is integer
