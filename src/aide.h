@@ -11,7 +11,7 @@ DESCRIPTION \n\
 	This is the EZ language compiler, a C based language for beginners. \n\
 	 \n\
 EXAMPLES \n\
-	Some xamples of common usage : \n\
+	Some examples of common usage : \n\
 	EZL example1.ez example2.ez -o example.exe \n\
 	 \n\
 OPTIONS \n\

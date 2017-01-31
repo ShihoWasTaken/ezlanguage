@@ -1,4 +1,4 @@
-# COmpiler usage
+# Compiler usage
 EZ_language_compiler [options] fichier
 
 
