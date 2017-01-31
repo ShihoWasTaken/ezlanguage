@@ -34,7 +34,7 @@ install:
 script:
   - make --file makefile -j2
   - ./bin/EZ_language_compiler tests/fichier_de_test.ezl
-  - cd tests
+  - cd examples
 # Launch valid tests
   - ./valid_tests.sh
 
