@@ -5,7 +5,7 @@ EZ_language_compiler [options] fichier
 # Liste complète des options en ligne de commande
 ## Options de base
 **--output:** spécifie le nom du fichier binaire en sortie.  
-Version courte :  -o
+Version courte :  -o  
 **--help:** affiche la liste des options du compilateur EZ et  leur fonction.   
 Version courte :  -h  
 ## Options d’ optimisation
