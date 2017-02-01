@@ -173,6 +173,7 @@ template <typename T>
 T VectorContainer<T>::min(T attr)
 {
 	// i'll look for it later
+	return attr;
 }
 
 template <typename T>   
@@ -222,6 +223,7 @@ template <typename T>
 int VectorContainer<T>::sum(T attr)
 {
 	// i'll look for it later
+	return 0;
 }
 
 
@@ -235,6 +237,7 @@ template <typename T>
 double VectorContainer<T>::average(T attr)
 {
 	// i'll look for it later
+	return 0;
 }
 
 template <typename T>   
@@ -247,6 +250,7 @@ template <typename T>
 int VectorContainer<T>::count(T attr, T value)
 {
 	// i'll look for it later
+	return 0;
 }
 
 template <typename T>   
@@ -270,6 +274,7 @@ template <typename T>
 int VectorContainer<T>::find(T argument, T value)
 {
 	// i'll look for it later
+	return 0;
 }
 
 template <typename T>   

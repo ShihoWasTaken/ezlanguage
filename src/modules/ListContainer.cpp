@@ -82,7 +82,7 @@ void ListContainer<T>::fill(T value)
 
 }
 
-string randomString(int& min_val, int& max_val)
+string randomString(int min_val, int max_val)
 {
 	static const char alphanum[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	string str;
@@ -94,7 +94,7 @@ string randomString(int& min_val, int& max_val)
 	return str;
 }
 
-int randomInteger(int& min_val, int& max_val)
+int randomInteger(int min_val, int max_val)
 {
 	return rand() % (max_val - min_val + 1);
 }
@@ -103,10 +103,6 @@ template <typename T>
 void ListContainer<T>::randomize(int min_val, int max_val)
 {
 	if(typeid(T) == typeid(string)){
-
-		static const char alphanum[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		string str;
-
 		generate (data.begin(), data.end(), randomString(min_val, max_val));
 
 
@@ -127,6 +123,7 @@ template <typename T>
 T ListContainer<T>::max(T attr)
 {
 	// i'll look for it later
+	return attr;
 }
 
 template <typename T>   
@@ -139,6 +136,7 @@ template <typename T>
 T ListContainer<T>::min(T attr)
 {
 	// i'll look for it later
+	return attr;
 }
 
 template <typename T>   
@@ -163,6 +161,7 @@ template <typename T>
 int ListContainer<T>::sum(T attr)
 {
 	// i'll look for it later
+	return 0;
 }
 
 template <typename T>   

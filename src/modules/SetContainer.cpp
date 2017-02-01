@@ -140,7 +140,7 @@ template <typename T>
 int SetContainer<T>::sum()
 {
 	int sum = 0;
-	for (int i : s1) {
+	for (int i : data) {
 	    sum += i;
 	}
 	return sum;
@@ -150,6 +150,7 @@ template <typename T>
 int SetContainer<T>::sum(T attr)
 {
 	// i'll look for it later
+	return 0;
 }
 
 template <typename T>   

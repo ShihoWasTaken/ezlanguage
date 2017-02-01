@@ -189,6 +189,7 @@ T ContainerArray<T>::max(T attribute)
 {
 	// think i have to use policy 
 	// i'll fix this later
+	return attribute;
 }
 
 
@@ -210,7 +211,7 @@ T ContainerArray<T>::min(T attribute)
 {
 	// think i have to use policy 
 	// i'll fix this later
-
+	return attribute;
 }
 
 
@@ -257,6 +258,7 @@ T ContainerArray<T>::sum(T attribute)
 {
 	// think i have to use policy 
 	// i'll fix this later
+	return attribute;
 }
 
 
