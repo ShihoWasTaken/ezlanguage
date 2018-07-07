@@ -1,0 +1,123 @@
+program main_simple
+// Execution example: `./1_main_simple.run --mynumber=35 --mystring="test"`
+
+include "sstream"
+
+parameters
+    mynumber is integer
+    mystring is string
+end
+
+class TestClass
+begin
+    int_member is integer
+
+    procedure hello()
+        print "Function into classes working, i have been assigned '" int_member "' for its protection"
+    end
+
+end
+
+procedure hello_world()
+print "Hello World !"
+end
+
+function checkTrueness(b is boolean) returns boolean
+    result is boolean
+    if b
+    then print "value is true"
+        result = true
+    else print "value is false"
+        result = false
+    end if
+    return result
+end
+
+main_simple
+/*
+this is
+
+a multiple lines comment
+
+*/
+    for i is integer in 1..argc-1 do
+        out is string = "" i
+        if i == 1
+        then out += "st"
+        else if i == 2
+            then out += "nd"
+            else if i == 3
+                then out += "rd"
+                else out += "th"
+                end
+            end
+        end
+        print out " argument: " argv[i]
+    end for
+
+    myClass is TestClass(3)
+    myClass.hello()
+
+    print "First statement"
+
+    hello_world
+
+    //this is a test
+    print "Second one : length of the string " mystring ": " mystring.length()
+
+    a is integer = 4
+    b is boolean
+    c is array[] of integer =  { 1, 2, 12 }
+    name is string
+
+    for i is integer in 0..2 step 1 do
+        print "for looping, i : " i
+        print "value of c[" i "]: " c[i]
+    end
+
+    while (a - 1 * 2) > 0 do
+        a = a -1
+        b = true
+        print "a : " a
+    end while
+
+    // Commented because it would prevent travis from executing all tests
+    // print "Enter the boolean value"
+    // input in b
+    checkTrueness(b)
+
+    if b or true
+    then print "'or' operator working"
+    else print "'or' operator not working"
+    end if
+
+    vect is vector of integer
+    vect.push_back(3)
+    
+    print "value of vect[" 0 "]: " vect[0]
+    print "value of vect.at(" 0 "): " vect.at(0)
+
+    vect2 is vector of integer = { 1, 2 }
+
+    l is list[10] of string
+    m is map of <string, integer>
+    s is set of string
+
+code
+    std::cout << "C++ code inclusion is working, \"en route\" for coding !" << std::endl;
+end
+
+    if true or true and false
+    then print "Cond expr with no parenthesis priority working"
+    else print "Cond expr with no parenthesis priority not working"
+    end if
+    
+    if (false and true) or true
+    then print "Cond expr with parenthesis left first working"
+    end if
+
+    if true or (true and false)
+    then print "Cond expr with parenthesis right first working"
+    end if
+
+end

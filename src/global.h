@@ -1,20 +1,104 @@
-#ifndef GLOBAL_H
-#define GLOBAL_H
+#pragma once
+
+#include "./addons/log.h"
+#include "./modules/Node.h"
+
+#include "./modules/ArrayAccess.h"
+#include "./modules/ConditionalExpression.h"
+#include "./modules/Expression.h"
+#include "./modules/FunctionCall.h"
+#include "./modules/FunctionCallExpression.h"
+#include "./modules/Operator.h"
+#include "./modules/TranslatedNode.h"
+
+#include "./declarations/CommonDeclaration.h"
+#include "./declarations/Array.h"
+#include "./declarations/Class.h"
+#include "./declarations/Container.h"
+#include "./declarations/Parameter.h"
+#include "./declarations/Method.h"
+#include "./declarations/Variable.h"
+
+#include "./instructions/Instruction.h"
+#include "./instructions/Affectation.h"
+#include "./instructions/CppCode.h"
+#include "./instructions/Else.h"
+#include "./instructions/If.h"
+#include "./instructions/FunctionCallInstruction.h"
+#include "./instructions/Return.h"
+#include "./hash_table/VariableHashed.h"
+#include "./hash_table/ScopeHashTable.h"
+#include <string>
+
+extern ScopeHashTable symbolTable;
 
 /**
- * @struct s_mon_type used to exchange value between flex and bison during parsing
+ * @struct s_node_types used to exchange value between flex and bison during parsing
  * @authors Valérian De Leeuw, Florentin Noël
  */
-typedef struct s_mon_type {
+typedef struct s_node_types {
     int numerical_value;
-    double reel_value;
-    bool booleen;
-    std::string texte;
-//    MaClasse	une_maclasse;
-} mon_type;
+    double real_value;
+    bool boolean;
+    std::string text;
+    // Modules
+    Node* tree;
+    ArrayAccess* arrayAccess;
+    ConditionalExpression* condExpr;
+    Expression* expr;
+    FunctionCall* functionCall;
+    FunctionCallExpression* functionCallExpr;
+    Operator* opeNode;
+    TranslatedNode* transNode;
+    // Declarations
+    CommonDeclaration* declaration;
+    Array* array;
+    Class* classNode;
+    Container* cont;
+    Method* method;
+    // Parameter* param; TODO define an abstract class that is inherited by parameters classes ?
+    CommonVar* param;
+    CommonVar* genericCont;
+    Variable* var;
+    // Instructions
+    Instruction* instr;
+    Affectation* affectation;
+    CppCode* code;
+    Else* elseNode;
+    FunctionCallInstruction* functionCallInstr;
+    If* ifNode;
+    Return* returnNode;
+} node_types;
 
-#define YYSTYPE mon_type
+typedef struct yyltype
+{
+  int first_line;
+  int first_column;
+
+  int last_line;
+  int last_column;
+} YYLTYPE;
+# define YYLTYPE_IS_DECLARED 1 /* alert the parser that we have our own definition */
+
+# define YYLLOC_DEFAULT(Current, Rhs, N)                               \
+    do                                                                 \
+      if (N)                                                           \
+        {                                                              \
+          (Current).first_line   = YYRHSLOC (Rhs, 1).first_line;       \
+          (Current).first_column = YYRHSLOC (Rhs, 1).first_column;     \
+          (Current).last_line    = YYRHSLOC (Rhs, N).last_line;        \
+          (Current).last_column  = YYRHSLOC (Rhs, N).last_column;      \
+          (Current).filename     = YYRHSLOC (Rhs, 1).filename;         \
+        }                                                              \
+      else                                                             \
+        { /* empty RHS */                                              \
+          (Current).first_line   = (Current).last_line   =             \
+            YYRHSLOC (Rhs, 0).last_line;                               \
+          (Current).first_column = (Current).last_column =             \
+            YYRHSLOC (Rhs, 0).last_column;                             \
+          (Current).filename  = NULL;                        /* new */ \
+        }                                                              \
+    while (0)
+
+#define YYSTYPE node_types
 extern YYSTYPE yylval;
-
-
-#endif

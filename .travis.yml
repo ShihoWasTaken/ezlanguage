@@ -4,10 +4,10 @@ dist: trusty
 cache: apt
 
 notifications:
-  slack: ezlanguage:Lx6iO5M1QzE01l4om91A36fo
+  # slack: ezlanguage:Lx6iO5M1QzE01l4om91A36fo
   webhooks:
     urls:
-      - https://webhooks.gitter.im/e/c8aafc19661a5dc78922
+      - https://webhooks.gitter.im/e/53480a60e7d28f4953f7
     on_success: change  # options: [always|never|change] default: always
     on_failure: always  # options: [always|never|change] default: always
     on_start: never     # options: [always|never|change] default: always
@@ -21,24 +21,29 @@ addons:
       # gcc/g++ repository
       - ubuntu-toolchain-r-test
     packages:
-      - g++-5
+      # - g++-5
+      - g++-7
 
 install:
 # g++ install
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-4.9"; fi
-  - alias g++="g++-5"
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-7" CC="gcc-4.9"; fi
+  - alias g++="g++-7"
   - g++ --version
   - echo -e "================="
   - $CXX --version
 
 script:
   - make --file makefile -j2
-  - ./bin/EZ_language_compiler tests/fichier_de_test.ezl
-  - cd examples
+  - ./bin/EZ_language_compiler tests/example.ezl -o example.run; rm -f *.run ; echo -e "\n =======\n"
 # Launch valid tests
-  - sh ./valid_tests.sh
+  - cd tests/
+  - bash basic_tests.sh && echo -e "\nResults tests\n =======\n" && ./*.run ; rm -f *.run ; echo -e "\n =======\n"
 
 after_success:
 # Launch other tests
-  - sh ./unvalid_tests.sh
-
+  - bash full_tests.sh && echo -e "\nResults\n =======\n"
+  - ./1_main_simple.run --mynumber 5 --mystring="hello" && rm -rf ./1_main_simple.run
+  - ./*.run ; rm -f *.run ; echo -e "\n =======\n"
+  - cd ../examples
+  - bash valid_tests.sh && echo -e "\nResults\n =======\n" && ./*.run ; rm -f *.run ; echo -e "\n =======\n"
+  - bash unvalid_tests.sh && echo -e "\nResults\n =======\n" && ./*.run ; rm -f *.run ; echo -e "\n =======\n"

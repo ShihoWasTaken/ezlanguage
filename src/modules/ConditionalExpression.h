@@ -2,56 +2,35 @@
 #define CONDITIONALEXPRESSION_H
 
 #include <string>
-#include "Node.h"
-#include "../addons/String_addon.h"
+#include "Expression.h"
 
 /**
- * @brief Represent a node of the tree which will traduct a condtional expression such as : (a and b) or (b or c)
- * @author Antoine GARNIER && Valentin GINISTY
+ * @brief Represent a node of the tree which will traduct any type of conditional expression
+ * It is an abstract class
  */
-class ConditionalExpression : public Node {
-
-private:
-    std::string operateur;
-    std::string valeur;
-    const ConditionalExpression * left_part;
-    const ConditionalExpression * right_part;
+class ConditionalExpression : public Expression {
 
 public:
-
     /**
-     * @brief Constructor
+     * @brief Default constructor
      * @param left : left son
-     * @param right : right son
-     * @param operateur_unaire : unary operator (with one parameter)
-     * @param operande : conditionnal expression
-     */
-    ConditionalExpression(Node * left, Node * right, const std::string & operateur_unaire, const ConditionalExpression* operande);
-
-    /**
-     * @brief Constructor
-     * @param left : left son
-     * @param right : right son
-     * @param operateur_unaire : binary operator (with two parameters)
-     * @param left_operande : conditionnal expression which is the first operand
-     * @param right_operande : conditionnal expression which is the second operand
-     */
-    ConditionalExpression(Node * left, Node * right, const std::string & operateur_binaire, const ConditionalExpression* left_operande, const ConditionalExpression* right_operande);
-
-    /**
-     * @brief Constructor
-     * @param left : left son
-     * @param right : right son
      * @param operande : value of the expression
      */
-    ConditionalExpression(Node * left, Node * right, const std::string & operande);
+    ConditionalExpression();
+    
+    /**
+     * @brief Constructor
+     * @param left : left son
+     * @param operande : value of the expression
+     */
+    ConditionalExpression(Node* left, Node* right);
+    
 
     /**
-     * @brief Translate the begining part of the Forall
-     * @return a string containing the C++ code of the node
+     * @brief Get the name of the node
+     * @return the name of the node. Defined at class creation
      */
-
-    virtual std::string preTranslate() const;
+    virtual inline const std::string getName() const { return "Conditional expression"; }
 };
 
 #endif

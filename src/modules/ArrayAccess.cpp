@@ -1,32 +1,50 @@
-//@author : Ismail ELFAQIR
 #include "ArrayAccess.h"
 
 using namespace std;
 
-ArrayAccess::ArrayAccess(Node * left, Node * right, const string & arrayN, int ind): Node(left, right), arrayName(arrayN), index(ind) 
+ArrayAccess::ArrayAccess(const string & arrayN, int ind):
+    Expression(), mArrayName(arrayN), mIndex(ind), mExpression(nullptr)
+{}
+
+ArrayAccess::ArrayAccess(const string & arrayN, Expression * expression):
+    Expression(), mArrayName(arrayN), mIndex(0), mExpression(expression)
 {}
 
 ArrayAccess::~ArrayAccess()
-{}
+{
+    delete mExpression;
+}
 
-string ArrayAccess::get_array() const{
-	return arrayName;
+
+const string &ArrayAccess::get_array() const {
+    return mArrayName;
 }
 
 int ArrayAccess::get_index() const{
-	return index;
+    return mIndex;
 }
 
 void ArrayAccess::set_array(const string & a) {
-	arrayName=a;
+    mArrayName=a;
 }
 
 void ArrayAccess::set_index(int i) {
-	index=i;
+    mIndex=i;
 }
 
 string ArrayAccess::preTranslate() const {
-	string result= arrayName+"["+to_string(index)+"]";
-	return result;
+    // TODO check array type to convert to string only if useful
+    string res= "";
+    res+= mArrayName +"[";
+
+    if (nullptr != mExpression) {
+        res+= mExpression->translate();
+    } else {
+        res+= to_string(mIndex);
+    }
+
+    res+= "]";
+
+    return res;
 }
 

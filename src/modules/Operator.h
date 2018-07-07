@@ -1,41 +1,59 @@
-#ifndef OPERATOR_H
-#define OPERATOR_H
+#ifndef OPERATION_H
+#define OPERATION_H
 
 #define UNARY 1
 #define BINARY 2
 
-#define LOGICAL 1
-#define ARITHMETIC 2
-#define ALLOCATION 3
-#define COMPARISON 4
-#define INCREMENT 5
+// enum operatorType { ARITHMETIC, BITWISE, RELATIONAL, LOGICAL, ALLOCATION, INCREMENT };
+// @see Create subclasses for each operator type ?
+// TODO for the moment, only the arithmetic and relational (comparison) operators will be implemented
 
-#include "Node.h"
+#include "../modules/Node.h"
+#include "Expression.h"
 
 /**
  * @brief 
- * @author : GARNIER Antoine
+ * @author : 
  * 
+ * Operators that need the value which they affect (abs for example),
+ * pass it by addind a left son
+ * @see old code may need to be removed
+ * 
+ * @note We could create RelationalOperator and LogicalOperator classes in order to
+ * have more precise type checking. Or use the operatorType enum
  */
-class Operator : public Node{
+class Operator : public Node {
 
 protected:
     //in the yacc file, "Operator(LOGICAL, "and")" could be called, given the appropriate token
-    int ope_nb; //operand's number, 1 = unary operator, 2 = binary operator...etc
-    int ope_type; //operator's type (1 : logical, 2 : arithmetic, 3 : allocation, 4 : comparison...etc)
-    std::string ope; //operator's value
-
-    std::string operande_1, operande_2;
+    // int ope_nb; //operand's number, 1 = unary operator, 2 = binary operator...etc
+    // int ope_type; //operator's type (1 : logical, 2 : arithmetic, 3 : allocation, 4 : comparison...etc)
+    std::string mOpeChars; //operator's characters
 
 public:
-    //constructors
-    Operator();
-    Operator(int ope_type, std::string ope);
-    Operator(int ope_nb, int ope_type, std::string ope, std::string ope_1, std::string ope_2);
+    /* * * * * * * * *
+    * CONSTRUCTORS  *
+    * * * * * * * * */
 
-    std::string getOperande_1() const { return operande_1; }
-    std::string getOperande_2() const { return operande_2; }
+    /**
+     * Constructor with parameters
+     * @param ope : string representing the operator
+     */
+    Operator(const std::string & ope, Expression * right_operande = nullptr);
     
+
+    /**
+     * @brief Get the name of the node
+     * @return the name of the node. Defined at class creation
+     */
+    virtual inline const std::string getName() const { return "Operator"; }
+
+    /**
+     * @brief Adds an equals sign to set as affectation operator
+     * @return false if there already was two characters in the operator or was malformed
+     */
+    bool setAsAffectation();
+
     /**
      * @brief Translate the begining part of the Operator
      * @return a string containing the C++ code of the node
@@ -43,7 +61,8 @@ public:
      * All subclasses, must reimplement this method so that the translation corresponds
      * to their specifications, specificities and own values
      */
-    virtual std::string preTranslate() const =0;
+    virtual std::string preTranslate() const;
+
 };
 
 

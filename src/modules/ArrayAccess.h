@@ -1,7 +1,6 @@
-#ifndef ARRAYACCESS_H
-#define ARRAYACCESS_H
+#pragma once
 
-#include "Node.h"
+#include "Expression.h"
 
 /**
  * @class AccessArray
@@ -10,18 +9,18 @@
  * example of translation my_array[5] -> here index=5  
  * @author Ismail ELFAQIR
  */
-class ArrayAccess : public Node {
-	
+class ArrayAccess : public Expression {
+
 protected:	
-	std::string arrayName;
-    int index;
+    std::string mArrayName;
+    int mIndex;
+    Expression * mExpression;
 
 public:
 
     /* * * * * * * * *
     * CONSTRUCTORS  *
     * * * * * * * * */
-
 
     /**
     * Constructor with parameters
@@ -32,13 +31,22 @@ public:
     * @param ind : index to access
     * @author Ismail ELFAQIR
     */
-    ArrayAccess(Node * left, Node * right, const std::string & arrayN, int ind);
-
+    ArrayAccess(const std::string & arrayName, int ind);
 
     /**
-    * Destructor
+    * Constructor with parameters
+    * Set the array and the access index of array by the parameters passed to the constructor
+    * @param left : left son
+    * @param right : right son
+    * @param arrayN : name of the array
+    * @param ind : index to access
     * @author Ismail ELFAQIR
     */
+    ArrayAccess(const std::string & arrayName, Expression * expression);
+
+    /**
+     * @brief destructor
+     */
     virtual ~ArrayAccess();
 
     /* * * * * * * * * * * * * *
@@ -46,29 +54,35 @@ public:
     * * * * * * * * * * * * * */
 
     /**
-    * getter of array
-    * @author Ismail ELFAQIR
-    */
-    std::string get_array() const;
+     * @brief Get the name of the node
+     * @return the name of the node. Defined at class creation
+     */
+    virtual inline const std::string getName() const { return "Array access"; }
 
     /**
-    * getter of index
-    * @author Ismail ELFAQIR
-    */
+     * getter of array
+     * @author Ismail ELFAQIR
+     */
+    const std::string & get_array() const;
+
+    /**
+     * getter of index
+     * @author Ismail ELFAQIR
+     */
     int get_index() const;
 
     /**
-    * setter of array
-    * @param a : reference to the ArrayDeclaration
-    * @author Ismail ELFAQIR
-    */
+     * setter of array
+     * @param a : reference to the ArrayDeclaration
+     * @author Ismail ELFAQIR
+     */
     void set_array(const std::string & a);
 
     /**
-    * setter of index
-    * @param i : index
-    * @author Ismail ELFAQIR
-    */
+     * setter of index
+     * @param i : index
+     * @author Ismail ELFAQIR
+     */
     void set_index(int i);
 
     /* * * * * * * *
@@ -84,5 +98,3 @@ public:
      */
     virtual std::string preTranslate() const;
 };
-
-#endif

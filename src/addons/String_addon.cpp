@@ -1,15 +1,17 @@
 //@author : CHARLOT Rodolphe, ELFAQIR Ismail
 #include "String_addon.h"
 
-string operator+ (string s, int i)
+using namespace std;
+
+string operator+ (string & s, int i)
 {
     return s+to_string(i);
 }
-string operator+ (string s, double i)
+string operator+ (string & s, double i)
 {
     return s+to_string(i);
 }
-string operator+ (string s, float i)
+string operator+ (string & s, float i)
 {
     return s+to_string(i);
 }
@@ -59,7 +61,7 @@ string join(const std::vector<std::string> &array_of_string, const string &join_
 	return result;
 }
 
-string join(const std::vector<std::string> &array_of_string, char join_with){
+std::string join(const std::vector<std::string> &array_of_string, char join_with){
 	string result="";
 	for(unsigned int i=0;i<array_of_string.size();i++){
 		result+=array_of_string[i];
@@ -94,4 +96,20 @@ string replace(const string &str, const string &to_replace, const string &replac
 
 bool contains(const string &str, const string &str2){
 	return str.find(str2)!=string::npos;
+}
+
+// We should not use this function, but create a Type class instead
+std::string translatePrimitiveType(const std::string & string_type)
+{
+    if(string_type == "integer"){
+        return "int";
+    }else if (string_type == "real"){
+        return "double";
+    }else if (string_type == "string"){
+        return "std::string";
+    }else if (string_type == "boolean"){
+        return "bool";
+    }else{
+        return "";
+    }
 }
